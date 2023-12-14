@@ -33,10 +33,10 @@ jobs:
       - name: Upload Artifacts
         uses: actions/upload-artifact@v3
         with:
-          name: Sparrow Build - ${{ runner.os }}
+          name: BitSparrow Build - ${{ runner.os }}
           path: |
             build/jpackage/*
-            !build/jpackage/Sparrow/
+            !build/jpackage/BitSparrow/
       - name: Headless build with Gradle
         if: ${{ runner.os == 'Linux' }}
         run: ./gradlew -Djava.awt.headless=true clean jpackage
@@ -50,7 +50,7 @@ jobs:
         if: ${{ runner.os == 'Linux' }}
         uses: actions/upload-artifact@v3
         with:
-          name: Sparrow Build - ${{ runner.os }} Headless
+          name: BitSparrow Build - ${{ runner.os }} Headless
           path: |
             build/jpackage/*
-            !build/jpackage/Sparrow/
+            !build/jpackage/BitSparrow/

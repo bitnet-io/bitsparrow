@@ -51,11 +51,11 @@ public class FiatCell extends TreeTableCell<Entry, Number> {
                 double btcRate = currencyRate.getBtcRate();
 
                 BigDecimal satsBalance = BigDecimal.valueOf(amount.longValue());
-                BigDecimal btcBalance = satsBalance.divide(BigDecimal.valueOf(Transaction.SATOSHIS_PER_BITCOIN));
+                BigDecimal btcBalance = satsBalance.divide(BigDecimal.valueOf(Transaction.RADIOWAVES_PER_BITCOIN));
                 BigDecimal fiatBalance = btcBalance.multiply(BigDecimal.valueOf(btcRate));
 
                 String label = format.formatCurrencyValue(fiatBalance.doubleValue());
-                tooltip.setText("1 BTC = " + currency.getSymbol() + " " + format.formatCurrencyValue(btcRate));
+                tooltip.setText("1 BIT = " + currency.getSymbol() + " " + format.formatCurrencyValue(btcRate));
 
                 setText(label);
                 setGraphic(null);

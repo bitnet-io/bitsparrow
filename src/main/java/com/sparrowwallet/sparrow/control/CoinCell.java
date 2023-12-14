@@ -56,13 +56,13 @@ class CoinCell extends TreeTableCell<Entry, Number> implements ConfirmationsList
 
             String satsValue = format.formatSatsValue(amount.longValue());
             DecimalFormat decimalFormat = (amount.longValue() == 0L ? format.getBtcFormat() : format.getTableBtcFormat());
-            final String btcValue = decimalFormat.format(amount.doubleValue() / Transaction.SATOSHIS_PER_BITCOIN);
+            final String btcValue = decimalFormat.format(amount.doubleValue() / Transaction.RADIOWAVES_PER_BITCOIN);
 
-            if(unit.equals(BitcoinUnit.BTC)) {
-                tooltip.setValue(satsValue + " " + BitcoinUnit.SATOSHIS.getLabel());
+            if(unit.equals(BitcoinUnit.BIT)) {
+                tooltip.setValue(satsValue + " " + BitcoinUnit.RADIOWAVES.getLabel());
                 setText(btcValue);
             } else {
-                tooltip.setValue(btcValue + " " + BitcoinUnit.BTC.getLabel());
+                tooltip.setValue(btcValue + " " + BitcoinUnit.BIT.getLabel());
                 setText(satsValue);
             }
             setTooltip(tooltip);
@@ -181,7 +181,7 @@ class CoinCell extends TreeTableCell<Entry, Number> implements ConfirmationsList
                 Clipboard.getSystemClipboard().setContent(content);
             });
 
-            MenuItem copyBtcValue = new MenuItem("Copy Value in BTC");
+            MenuItem copyBtcValue = new MenuItem("Copy Value in BIT");
             copyBtcValue.setOnAction(AE -> {
                 hide();
                 ClipboardContent content = new ClipboardContent();

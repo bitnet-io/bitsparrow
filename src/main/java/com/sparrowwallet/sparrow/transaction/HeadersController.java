@@ -1189,12 +1189,12 @@ public class HeadersController extends TransactionFormController implements Init
                 Matcher feeMatcher = RBF_INSUFFICIENT_FEE.matcher(failMessage);
                 Matcher feeRateMatcher = RBF_INSUFFICIENT_FEE_RATE.matcher(failMessage);
                 if(feeMatcher.matches() && fee.getValue() > 0) {
-                    long currentAdditionalFee = (long)(Double.parseDouble(feeMatcher.group(1)) * Transaction.SATOSHIS_PER_BITCOIN);
-                    long requiredAdditionalFee = (long)(Double.parseDouble(feeMatcher.group(2)) * Transaction.SATOSHIS_PER_BITCOIN);
+                    long currentAdditionalFee = (long)(Double.parseDouble(feeMatcher.group(1)) * Transaction.RADIOWAVES_PER_BITCOIN);
+                    long requiredAdditionalFee = (long)(Double.parseDouble(feeMatcher.group(2)) * Transaction.RADIOWAVES_PER_BITCOIN);
                     long requiredFee = fee.getValue() - currentAdditionalFee + requiredAdditionalFee;
                     AppServices.showErrorDialog("Error broadcasting transaction", "The fee for the replacement transaction was insufficient. Increase the fee to at least " + requiredFee + " sats to try again.");
                 } else if(feeRateMatcher.matches()) {
-                    double requiredFeeRate = Double.parseDouble(feeRateMatcher.group(2)) * Transaction.SATOSHIS_PER_BITCOIN / 1000;
+                    double requiredFeeRate = Double.parseDouble(feeRateMatcher.group(2)) * Transaction.RADIOWAVES_PER_BITCOIN / 1000;
                     AppServices.showErrorDialog("Error broadcasting transaction", "The fee rate for the replacement transaction was insufficient. Increase the fee rate to at least " + format.getCurrencyFormat().format(requiredFeeRate) + " sats/vB to try again.");
                 } else {
                     AppServices.showErrorDialog("Error broadcasting transaction", "The fee for the replacement transaction was insufficient. Increase the fee to try again.");

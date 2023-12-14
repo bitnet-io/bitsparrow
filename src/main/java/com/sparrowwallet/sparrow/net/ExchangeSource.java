@@ -54,7 +54,7 @@ public enum ExchangeSource {
         }
 
         private CoinbaseRates getRates() {
-            String url = "https://api.coinbase.com/v2/exchange-rates?currency=BTC";
+            String url = "https://api.coinbase.com/v2/exchange-rates?currency=BIT";
 
             if(log.isInfoEnabled()) {
                 log.info("Requesting exchange rates from " + url);
@@ -90,7 +90,7 @@ public enum ExchangeSource {
                 String startTime = dateFormat.format(fromDate);
                 String endTime = dateFormat.format(toDate);
 
-                String url = "https://api.pro.coinbase.com/products/BTC-" + currency.getCurrencyCode() + "/candles?start=" + startTime + "T12:00:00&end=" + endTime + "T12:00:00&granularity=86400";
+                String url = "https://api.pro.coinbase.com/products/BIT-" + currency.getCurrencyCode() + "/candles?start=" + startTime + "T12:00:00&end=" + endTime + "T12:00:00&granularity=86400";
 
                 if(log.isInfoEnabled()) {
                     log.info("Requesting historical exchange rates from " + url);
@@ -108,7 +108,7 @@ public enum ExchangeSource {
                         log.warn("Error retrieving historical currency rates", e);
                     } else {
                         if(e instanceof JavaHttpException javaHttpException && javaHttpException.getStatusCode() == 404) {
-                            log.warn("Error retrieving historical currency rates (" + e.getMessage() + "). BTC-" + currency.getCurrencyCode() + " may not be supported by " + this);
+                            log.warn("Error retrieving historical currency rates (" + e.getMessage() + "). BIT-" + currency.getCurrencyCode() + " may not be supported by " + this);
                         } else {
                             log.warn("Error retrieving historical currency rates (" + e.getMessage() + ")");
                         }
@@ -162,7 +162,7 @@ public enum ExchangeSource {
             long startDate = start.getTime() / 1000;
             long endDate = end.getTime() / 1000;
 
-            String url = "https://api.coingecko.com/api/v3/coins/bitcoin/market_chart/range?vs_currency=" + currency.getCurrencyCode() + "&from=" + startDate + "&to=" + endDate;
+            String url = "https://api.coingecko.com/api/v3/coins/bitnet-io/market_chart/range?vs_currency=" + currency.getCurrencyCode() + "&from=" + startDate + "&to=" + endDate;
 
             if(log.isInfoEnabled()) {
                 log.info("Requesting historical exchange rates from " + url);

@@ -259,7 +259,7 @@ public class AppController implements Initializable {
             closeTab.setDisable(tabs.getTabs().isEmpty());
             if(tabs.getTabs().isEmpty()) {
                 Stage tabStage = (Stage) tabs.getScene().getWindow();
-                tabStage.setTitle("Sparrow");
+                tabStage.setTitle("BitSparrow");
                 saveTransaction.setVisible(true);
                 saveTransaction.setDisable(true);
                 exportWallet.setDisable(true);
@@ -341,7 +341,7 @@ public class AppController implements Initializable {
         Optional<Toggle> selectedUnitToggle = bitcoinUnit.getToggles().stream().filter(toggle -> selectedUnit.equals(toggle.getUserData())).findFirst();
         selectedUnitToggle.ifPresent(toggle -> bitcoinUnit.selectToggle(toggle));
         Optional<Toggle> otherUnitToggle = bitcoinUnit.getToggles().stream().filter(toggle ->
-                (List.of(BitcoinUnit.AUTO, BitcoinUnit.SATOSHIS).contains(selectedUnit) && BitcoinUnit.BTC.equals(toggle.getUserData()) || (selectedUnit == BitcoinUnit.BTC && BitcoinUnit.SATOSHIS.equals(toggle.getUserData())))).findFirst();
+                (List.of(BitcoinUnit.AUTO, BitcoinUnit.RADIOWAVES).contains(selectedUnit) && BitcoinUnit.BIT.equals(toggle.getUserData()) || (selectedUnit == BitcoinUnit.BIT && BitcoinUnit.RADIOWAVES.equals(toggle.getUserData())))).findFirst();
         otherUnitToggle.ifPresent(toggle -> ((RadioMenuItem)toggle).setAccelerator(new KeyCodeCombination(KeyCode.B, KeyCombination.SHORTCUT_DOWN)));
 
         UnitFormat format = Config.get().getUnitFormat();
@@ -485,7 +485,7 @@ public class AppController implements Initializable {
     }
 
     public void showLogFile(ActionEvent event) throws IOException {
-        File logFile = new File(Storage.getSparrowHome(), "sparrow.log");
+        File logFile = new File(Storage.getBitSparrowHome(), "sparrow.log");
         if(logFile.exists()) {
             AppServices.get().getApplication().getHostServices().showDocument(logFile.toPath().toUri().toString());
         } else {
@@ -500,7 +500,7 @@ public class AppController implements Initializable {
     public void submitBugReport(ActionEvent event) {
         ButtonType supportType = new ButtonType("Get Support", ButtonBar.ButtonData.LEFT);
         ButtonType bugType = new ButtonType("Submit Bug Report", ButtonBar.ButtonData.YES);
-        Optional<ButtonType> optResponse = showWarningDialog("Submit Bug Report", "Please note that this facility is for bug reports and feature requests only. There is a community of Sparrow users who can assist with support requests.", supportType, bugType);
+        Optional<ButtonType> optResponse = showWarningDialog("Submit Bug Report", "Please note that this facility is for bug reports and feature requests only. There is a community of BitSparrow users who can assist with support requests.", supportType, bugType);
 
         if(optResponse.isPresent()) {
             if(optResponse.get() == bugType) {
@@ -2417,7 +2417,7 @@ public class AppController implements Initializable {
             String tabName = event.getTabName();
             if(tabs.getScene() != null) {
                 Stage tabStage = (Stage)tabs.getScene().getWindow();
-                tabStage.setTitle("Sparrow - " + tabName);
+                tabStage.setTitle("BitSparrow - " + tabName);
             }
 
             if(event instanceof TransactionTabSelectedEvent) {
@@ -2572,12 +2572,12 @@ public class AppController implements Initializable {
                 }
 
                 Notifications notificationBuilder = Notifications.create()
-                        .title("Sparrow - " + walletName)
+                        .title("BitSparrow - " + walletName)
                         .text(text)
                         .graphic(new ImageView(image))
                         .hideAfter(Duration.seconds(15))
                         .position(Pos.TOP_RIGHT)
-                        .threshold(5, Notifications.create().title("Sparrow").text("Multiple new wallet transactions").graphic(new ImageView(image)))
+                        .threshold(5, Notifications.create().title("BitSparrow").text("Multiple new wallet transactions").graphic(new ImageView(image)))
                         .onAction(e -> selectTab(event.getWallet()));
 
                 //If controlsfx can't find our window, we must set the window ourselves (unfortunately notification is then shown within this window)
@@ -2610,7 +2610,7 @@ public class AppController implements Initializable {
 
     @Subscribe
     public void versionUpdated(VersionUpdatedEvent event) {
-        Hyperlink versionUpdateLabel = new Hyperlink("Sparrow " + event.getVersion() + " available");
+        Hyperlink versionUpdateLabel = new Hyperlink("BitSparrow " + event.getVersion() + " available");
         versionUpdateLabel.getStyleClass().add("version-hyperlink");
         versionUpdateLabel.setOnAction(event1 -> {
             AppServices.get().getApplication().getHostServices().showDocument("https://www.sparrowwallet.com/download");
@@ -2971,7 +2971,7 @@ public class AppController implements Initializable {
         selectedToggle.ifPresent(toggle -> bitcoinUnit.selectToggle(toggle));
         bitcoinUnit.getToggles().forEach(toggle -> {
             RadioMenuItem menuItem = (RadioMenuItem)toggle;
-            if(List.of(BitcoinUnit.AUTO, BitcoinUnit.SATOSHIS).contains(event.getBitcoinUnit()) && BitcoinUnit.BTC.equals(toggle.getUserData()) || (event.getBitcoinUnit() == BitcoinUnit.BTC && BitcoinUnit.SATOSHIS.equals(toggle.getUserData()))) {
+            if(List.of(BitcoinUnit.AUTO, BitcoinUnit.RADIOWAVES).contains(event.getBitcoinUnit()) && BitcoinUnit.BIT.equals(toggle.getUserData()) || (event.getBitcoinUnit() == BitcoinUnit.BIT && BitcoinUnit.RADIOWAVES.equals(toggle.getUserData()))) {
                 menuItem.setAccelerator(new KeyCodeCombination(KeyCode.B, KeyCombination.SHORTCUT_DOWN));
             } else {
                 menuItem.setAccelerator(null);

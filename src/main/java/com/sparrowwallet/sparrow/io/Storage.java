@@ -40,8 +40,8 @@ public class Storage {
     private static final DateFormat BACKUP_DATE_FORMAT = new SimpleDateFormat("yyyyMMddHHmmss");
     private static final Pattern DATE_PATTERN = Pattern.compile(".+-([0-9]{14}?).*");
 
-    public static final String SPARROW_DIR = ".sparrow";
-    public static final String WINDOWS_SPARROW_DIR = "Sparrow";
+    public static final String SPARROW_DIR = ".bitsparrow";
+    public static final String WINDOWS_SPARROW_DIR = "BitSparrow";
     public static final String WALLETS_DIR = "wallets";
     public static final String WALLETS_BACKUP_DIR = "backup";
     public static final String CERTS_DIR = "certs";
@@ -538,9 +538,9 @@ public class Storage {
     static File getSparrowDir() {
         File sparrowDir;
         if(Network.get() != Network.MAINNET) {
-            sparrowDir = new File(getSparrowHome(), Network.get().getName());
+            sparrowDir = new File(getBitSparrowHome(), Network.get().getName());
         } else {
-            sparrowDir = getSparrowHome();
+            sparrowDir = getBitSparrowHome();
         }
 
         if(!sparrowDir.exists()) {
@@ -550,7 +550,7 @@ public class Storage {
         return sparrowDir;
     }
 
-    public static File getSparrowHome() {
+    public static File getBitSparrowHome() {
         if(System.getProperty(SparrowWallet.APP_HOME_PROPERTY) != null) {
             return new File(System.getProperty(SparrowWallet.APP_HOME_PROPERTY));
         }

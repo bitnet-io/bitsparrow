@@ -22,7 +22,7 @@ public class FontAwesome5 extends GlyphFont {
         ARROW_UP('\uf062'),
         BAN('\uf05e'),
         BIOHAZARD('\uf780'),
-        BTC('\uf15a'),
+        BIT('\uf15a'),
         BULLSEYE('\uf140'),
         CAMERA('\uf030'),
         CARET_LEFT('\uf0d9'),

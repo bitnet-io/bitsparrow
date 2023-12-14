@@ -10,7 +10,7 @@ public class AirGapVault extends KeystoneSinglesig {
 
     @Override
     public String getKeystoreImportDescription(int account) {
-        return "Import QR created on your AirGap Vault, by selecting the Secret > Account > Sparrow Wallet";
+        return "Import QR created on your AirGap Vault, by selecting the Secret > Account > BitSparrow Wallet";
     }
 
     @Override

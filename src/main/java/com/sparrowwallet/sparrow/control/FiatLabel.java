@@ -91,11 +91,11 @@ public class FiatLabel extends CopyableLabel {
     private void setValueAsText(long balance, UnitFormat unitFormat) {
         if(getCurrency() != null && getBtcRate() > 0.0) {
             BigDecimal satsBalance = BigDecimal.valueOf(balance);
-            BigDecimal btcBalance = satsBalance.divide(BigDecimal.valueOf(Transaction.SATOSHIS_PER_BITCOIN));
+            BigDecimal btcBalance = satsBalance.divide(BigDecimal.valueOf(Transaction.RADIOWAVES_PER_BITCOIN));
             BigDecimal fiatBalance = btcBalance.multiply(BigDecimal.valueOf(getBtcRate()));
 
             String label = getCurrency().getSymbol() + " " + unitFormat.formatCurrencyValue(fiatBalance.doubleValue());
-            tooltip.setText("1 BTC = " + getCurrency().getSymbol() + " " + unitFormat.formatCurrencyValue(getBtcRate()));
+            tooltip.setText("1 BIT = " + getCurrency().getSymbol() + " " + unitFormat.formatCurrencyValue(getBtcRate()));
 
             setText(label);
             setTooltip(tooltip);

@@ -348,7 +348,7 @@ public class SendController extends WalletFormController implements Initializabl
         fee.textProperty().addListener(feeListener);
 
         BitcoinUnit unit = getBitcoinUnit(Config.get().getBitcoinUnit());
-        feeAmountUnit.getSelectionModel().select(BitcoinUnit.BTC.equals(unit) ? 0 : 1);
+        feeAmountUnit.getSelectionModel().select(BitcoinUnit.BIT.equals(unit) ? 0 : 1);
         feeAmountUnit.valueProperty().addListener((observable, oldValue, newValue) -> {
             Long value = getFeeValueSats(oldValue);
             if(value != null) {
@@ -1543,7 +1543,7 @@ public class SendController extends WalletFormController implements Initializabl
     @Subscribe
     public void bitcoinUnitChanged(BitcoinUnitChangedEvent event) {
         BitcoinUnit unit = getBitcoinUnit(event.getBitcoinUnit());
-        feeAmountUnit.getSelectionModel().select(BitcoinUnit.BTC.equals(unit) ? 0 : 1);
+        feeAmountUnit.getSelectionModel().select(BitcoinUnit.BIT.equals(unit) ? 0 : 1);
     }
 
     @Subscribe
@@ -1644,7 +1644,7 @@ public class SendController extends WalletFormController implements Initializabl
     public void sorobanInitiated(SorobanInitiatedEvent event) {
         if(event.getWallet().equals(getWalletForm().getWallet())) {
             if(!AppServices.onlineProperty().get()) {
-                Optional<ButtonType> optButtonType = AppServices.showErrorDialog("Cannot Mix Offline", "Sparrow needs to be connected to a server to perform collaborative mixes. Try to connect?", ButtonType.CANCEL, ButtonType.OK);
+                Optional<ButtonType> optButtonType = AppServices.showErrorDialog("Cannot Mix Offline", "BitSparrow needs to be connected to a server to perform collaborative mixes. Try to connect?", ButtonType.CANCEL, ButtonType.OK);
                 if(optButtonType.isPresent() && optButtonType.get() == ButtonType.OK) {
                     AppServices.onlineProperty().set(true);
                 }

@@ -15,20 +15,20 @@ public enum FeeRatesSource {
             return Collections.emptyMap();
         }
     },
-    MEMPOOL_SPACE("mempool.space") {
+    MEMPOOL_SPACE("bitexplorer.io") {
         @Override
         public Map<Integer, Double> getBlockTargetFeeRates(Map<Integer, Double> defaultblockTargetFeeRates) {
-            String url = AppServices.isUsingProxy() ? "http://mempoolhqx4isw62xs7abwphsq7ldayuidyx2v2oethdhhj6mlo2r6ad.onion/api/v1/fees/recommended" : "https://mempool.space/api/v1/fees/recommended";
+            String url = "https://bitexplorer.io/api/v1/fees/recommended";
             return getThreeTierFeeRates(this, defaultblockTargetFeeRates, url);
         }
     },
-    BITCOINFEES_EARN_COM("bitcoinfees.earn.com") {
-        @Override
-        public Map<Integer, Double> getBlockTargetFeeRates(Map<Integer, Double> defaultblockTargetFeeRates) {
-            String url = "https://bitcoinfees.earn.com/api/v1/fees/recommended";
-            return getThreeTierFeeRates(this, defaultblockTargetFeeRates, url);
-        }
-    },
+//    BITCOINFEES_EARN_COM("bitcoinfees.earn.com") {
+  //      @Override
+    //    public Map<Integer, Double> getBlockTargetFeeRates(Map<Integer, Double> defaultblockTargetFeeRates) {
+      //      String url = "https://bitcoinfees.earn.com/api/v1/fees/recommended";
+        //    return getThreeTierFeeRates(this, defaultblockTargetFeeRates, url);
+//        }
+//    },
     MINIMUM("Minimum (1 sat/vB)") {
         @Override
         public Map<Integer, Double> getBlockTargetFeeRates(Map<Integer, Double> defaultblockTargetFeeRates) {
@@ -40,11 +40,11 @@ public enum FeeRatesSource {
             return blockTargetFeeRates;
         }
     },
-    OXT_ME("oxt.me") {
+    OXT_ME("bitexplorer.io") {
         @Override
         public Map<Integer, Double> getBlockTargetFeeRates(Map<Integer, Double> defaultblockTargetFeeRates) {
-            String url = AppServices.isUsingProxy() ? "http://oxtwshnfyktikbflierkwcxxksbonl6v73l5so5zky7ur72w52tktkid.onion/stats/global/mempool" : "https://api.oxt.me/stats/global/mempool";
-            return getThreeTierFeeRates(this, defaultblockTargetFeeRates, url);
+            String url = "https://bitexplorer.io/api/v1/fees/recommended";
+           return getThreeTierFeeRates(this, defaultblockTargetFeeRates, url);
         }
 
         @Override

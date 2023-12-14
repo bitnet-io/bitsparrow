@@ -109,7 +109,7 @@ public class ColdcardMultisigTest extends IoTest {
         byte[] exportedBytes = baos.toByteArray();
         String original = new String(walletBytes);
         String exported = new String(exportedBytes);
-        Assert.assertEquals(original.replaceAll("created on [0-9A-F]+", ""), exported.replace("created by Sparrow", ""));
+        Assert.assertEquals(original.replaceAll("created on [0-9A-F]+", ""), exported.replace("created by BitSparrow", ""));
     }
 
     @Test
@@ -122,7 +122,7 @@ public class ColdcardMultisigTest extends IoTest {
         byte[] exportedBytes = baos.toByteArray();
         String original = new String(walletBytes);
         String exported = new String(exportedBytes);
-        Assert.assertEquals(original.replaceAll("Exported from Electrum", ""), exported.replace("Coldcard Multisig setup file (created by Sparrow)\n#", ""));
+        Assert.assertEquals(original.replaceAll("Exported from Electrum", ""), exported.replace("Coldcard Multisig setup file (created by BitSparrow)\n#", ""));
     }
 
     @After

@@ -66,21 +66,21 @@
                 </fx:define>
                 <Menu fx:id="viewMenu" mnemonicParsing="false" text="View">
                     <items>
-                        <Menu mnemonicParsing="false" text="Bitcoin Unit">
+                        <Menu mnemonicParsing="false" text="Bitnet Unit">
                             <items>
                                 <RadioMenuItem mnemonicParsing="false" text="Auto" toggleGroup="$bitcoinUnit" onAction="#setBitcoinUnit">
                                     <userData>
                                         <BitcoinUnit fx:constant="AUTO" />
                                     </userData>
                                 </RadioMenuItem>
-                                <RadioMenuItem mnemonicParsing="false" text="BTC" toggleGroup="$bitcoinUnit" onAction="#setBitcoinUnit">
+                                <RadioMenuItem mnemonicParsing="false" text="BIT" toggleGroup="$bitcoinUnit" onAction="#setBitcoinUnit">
                                     <userData>
-                                        <BitcoinUnit fx:constant="BTC" />
+                                        <BitcoinUnit fx:constant="BIT" />
                                     </userData>
                                 </RadioMenuItem>
                                 <RadioMenuItem mnemonicParsing="false" text="sats" toggleGroup="$bitcoinUnit" onAction="#setBitcoinUnit">
                                     <userData>
-                                        <BitcoinUnit fx:constant="SATOSHIS" />
+                                        <BitcoinUnit fx:constant="RADIOWAVES" />
                                     </userData>
                                 </RadioMenuItem>
                             </items>
@@ -150,7 +150,7 @@
                     <MenuItem mnemonicParsing="false" text="Show Log File" onAction="#showLogFile"/>
                     <MenuItem mnemonicParsing="false" text="Get Support" onAction="#openSupport"/>
                     <MenuItem mnemonicParsing="false" text="Submit Bug Report" onAction="#submitBugReport"/>
-                    <MenuItem styleClass="osxHide" mnemonicParsing="false" text="About Sparrow" onAction="#showAbout"/>
+                    <MenuItem styleClass="osxHide" mnemonicParsing="false" text="About BitSparrow" onAction="#showAbout"/>
                 </Menu>
             </menus>
         </MenuBar>

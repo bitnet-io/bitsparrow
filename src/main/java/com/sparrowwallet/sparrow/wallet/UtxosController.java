@@ -225,12 +225,12 @@ public class UtxosController extends WalletFormController implements Initializab
             }
 
             if(unit == null || unit.equals(BitcoinUnit.AUTO)) {
-                unit = (selectedTotal >= BitcoinUnit.getAutoThreshold() ? BitcoinUnit.BTC : BitcoinUnit.SATOSHIS);
+                unit = (selectedTotal >= BitcoinUnit.getAutoThreshold() ? BitcoinUnit.BIT : BitcoinUnit.RADIOWAVES);
             }
 
-            if(unit.equals(BitcoinUnit.BTC)) {
-                sendSelected.setText("Send Selected (" + format.formatBtcValue(selectedTotal) + " BTC)");
-                mixSelected.setText("Mix Selected (" + format.formatBtcValue(selectedTotal) + " BTC)");
+            if(unit.equals(BitcoinUnit.BIT)) {
+                sendSelected.setText("Send Selected (" + format.formatBtcValue(selectedTotal) + " BIT)");
+                mixSelected.setText("Mix Selected (" + format.formatBtcValue(selectedTotal) + " BIT)");
             } else {
                 sendSelected.setText("Send Selected (" + format.formatSatsValue(selectedTotal) + " sats)");
                 mixSelected.setText("Mix Selected (" + format.formatSatsValue(selectedTotal) + " sats)");
@@ -499,7 +499,7 @@ public class UtxosController extends WalletFormController implements Initializab
 
     private String getCoinValue(Long value) {
         UnitFormat format = Config.get().getUnitFormat() == null ? UnitFormat.DOT : Config.get().getUnitFormat();
-        return BitcoinUnit.BTC.equals(utxosTable.getBitcoinUnit()) ? format.tableFormatBtcValue(value) : String.format(Locale.ENGLISH, "%d", value);
+        return BitcoinUnit.BIT.equals(utxosTable.getBitcoinUnit()) ? format.tableFormatBtcValue(value) : String.format(Locale.ENGLISH, "%d", value);
     }
 
     private static Glyph getExternalGlyph() {

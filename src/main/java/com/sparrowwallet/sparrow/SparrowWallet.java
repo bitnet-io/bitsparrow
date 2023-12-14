@@ -17,7 +17,7 @@ import java.util.*;
 
 public class SparrowWallet {
     public static final String APP_ID = "com.sparrowwallet.sparrow";
-    public static final String APP_NAME = "Sparrow";
+    public static final String APP_NAME = "BitSparrow";
     public static final String APP_VERSION = "1.8.2";
     public static final String APP_VERSION_SUFFIX = "";
     public static final String APP_HOME_PROPERTY = "sparrow.home";
@@ -35,7 +35,7 @@ public class SparrowWallet {
         }
 
         if(args.version) {
-            System.out.println("Sparrow Wallet " + APP_VERSION);
+            System.out.println("BitSparrow Wallet " + APP_VERSION);
             System.exit(0);
         }
 
@@ -45,7 +45,7 @@ public class SparrowWallet {
 
         if(args.dir != null) {
             System.setProperty(APP_HOME_PROPERTY, args.dir);
-            getLogger().info("Using configured Sparrow home folder of " + args.dir);
+            getLogger().info("Using configured BitSparrow home folder of " + args.dir);
         }
 
         if(args.network != null) {
@@ -61,12 +61,12 @@ public class SparrowWallet {
             }
         }
 
-        File testnetFlag = new File(Storage.getSparrowHome(), "network-" + Network.TESTNET.getName());
+        File testnetFlag = new File(Storage.getBitSparrowHome(), "network-" + Network.TESTNET.getName());
         if(testnetFlag.exists()) {
             Network.set(Network.TESTNET);
         }
 
-        File signetFlag = new File(Storage.getSparrowHome(), "network-" + Network.SIGNET.getName());
+        File signetFlag = new File(Storage.getBitSparrowHome(), "network-" + Network.SIGNET.getName());
         if(signetFlag.exists()) {
             Network.set(Network.SIGNET);
         }
@@ -106,7 +106,7 @@ public class SparrowWallet {
         } catch(UnsupportedOperationException e) {
             Drongo.removeRootLogAppender("STDOUT");
             getLogger().error("Unable to launch application", e);
-            System.out.println("No display detected. Use Sparrow Server on a headless (no display) system.");
+            System.out.println("No display detected. Use BitSparrow Server on a headless (no display) system.");
 
             try {
                 if(instance != null) {

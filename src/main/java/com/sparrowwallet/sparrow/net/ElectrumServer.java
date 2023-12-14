@@ -84,7 +84,7 @@ public class ElectrumServer {
                     proxyServer = Config.get().getProxyServer();
                 } else if(Config.get().getServerType() == ServerType.BITCOIN_CORE) {
                     if(coreElectrumServer == null) {
-                        throw new ServerConfigException("Could not connect to Bitcoin Core RPC");
+                        throw new ServerConfigException("Could not connect to Bitnet Core RPC");
                     }
                     electrumServer = coreElectrumServer;
                     if(previousServer != null && previousServer.getUrl().contains(CORE_ELECTRUM_HOST)) {
@@ -149,7 +149,7 @@ public class ElectrumServer {
     }
 
     public List<String> getServerVersion() throws ServerException {
-        return electrumServerRpc.getServerVersion(getTransport(), "Sparrow", SUPPORTED_VERSIONS);
+        return electrumServerRpc.getServerVersion(getTransport(), "BitSparrow", SUPPORTED_VERSIONS);
     }
 
     public String getServerBanner() throws ServerException {
@@ -830,7 +830,7 @@ public class ElectrumServer {
 
             Map<Integer, Double> targetBlocksFeeRatesSats = new TreeMap<>();
             for(Integer target : targetBlocksFeeRatesBtcKb.keySet()) {
-                long minFeeRateSatsKb = (long)(targetBlocksFeeRatesBtcKb.get(target) * Transaction.SATOSHIS_PER_BITCOIN);
+                long minFeeRateSatsKb = (long)(targetBlocksFeeRatesBtcKb.get(target) * Transaction.RADIOWAVES_PER_BITCOIN);
                 if(minFeeRateSatsKb < 0) {
                     minFeeRateSatsKb = 1000;
                 }
@@ -859,7 +859,7 @@ public class ElectrumServer {
     public Double getMinimumRelayFee() throws ServerException {
         Double minFeeRateBtcKb = electrumServerRpc.getMinimumRelayFee(getTransport());
         if(minFeeRateBtcKb != null) {
-            long minFeeRateSatsKb = (long)(minFeeRateBtcKb * Transaction.SATOSHIS_PER_BITCOIN);
+            long minFeeRateSatsKb = (long)(minFeeRateBtcKb * Transaction.RADIOWAVES_PER_BITCOIN);
             return minFeeRateSatsKb / 1000d;
         }
 
@@ -1150,19 +1150,19 @@ public class ElectrumServer {
                                         if(bwtStartException != null) {
                                             Matcher walletLoadingMatcher = RPC_WALLET_LOADING_PATTERN.matcher(bwtStartException.getMessage());
                                             if(bwtStartException.getMessage().contains("Wallet file not specified")) {
-                                                throw new ServerException("Bitcoin Core requires Multi-Wallet to be enabled in the Server Preferences");
-                                            } else if(bwtStartException.getMessage().contains("Upgrade Bitcoin Core to v24 or later for Taproot wallet support")) {
+                                                throw new ServerException("Bitnet Core requires Multi-Wallet to be enabled in the Server Preferences");
+                                            } else if(bwtStartException.getMessage().contains("Upgrade Bitnet Core to v24 or later for Taproot wallet support")) {
                                                 throw new ServerException(bwtStartException.getMessage());
                                             } else if(bwtStartException.getMessage().contains("Wallet file verification failed. Refusing to load database.")) {
-                                                throw new ServerException("Bitcoin Core wallet file verification failed. Try restarting Bitcoin Core.");
+                                                throw new ServerException("Bitnet Core wallet file verification failed. Try restarting Bitnet Core.");
                                             } else if(bwtStartException.getMessage().contains("This error could be caused by pruning or data corruption")) {
-                                                throw new ServerException("Scanning failed. Bitcoin Core is pruned to a date after the wallet birthday.");
+                                                throw new ServerException("Scanning failed. Bitnet Core is pruned to a date after the wallet birthday.");
                                             } else if(walletLoadingMatcher.matches() && walletLoadingMatcher.group(1) != null) {
                                                 throw new ServerException(walletLoadingMatcher.group(1));
                                             }
                                         }
 
-                                        throw new ServerException("Check if Bitcoin Core is running, and the authentication details are correct.");
+                                        throw new ServerException("Check if Bitnet Core is running, and the authentication details are correct.");
                                     }
                                 } catch(InterruptedException ex) {
                                     Thread.currentThread().interrupt();

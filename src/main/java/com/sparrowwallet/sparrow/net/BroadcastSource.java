@@ -16,7 +16,7 @@ import java.security.SecureRandom;
 import java.util.List;
 
 public enum BroadcastSource {
-    BLOCKSTREAM_INFO("blockstream.info", "https://blockstream.info", "http://explorerzydxu5ecjrkwceayqybizmpjjznk5izmitf2modhcusuqlid.onion") {
+    BLOCKSTREAM_INFO("bitexplorer.io", "https://bitexplorer.io", "http://explorerzydxu5ecjrkwceayqybizmpjjznk5izmitf2modhcusuqlid.onion") {
         @Override
         public Sha256Hash broadcastTransaction(Transaction transaction) throws BroadcastException {
             String data = Utils.bytesToHex(transaction.bitcoinSerialize());
@@ -38,7 +38,7 @@ public enum BroadcastSource {
             }
         }
     },
-    MEMPOOL_SPACE("mempool.space", "https://mempool.space", "http://mempoolhqx4isw62xs7abwphsq7ldayuidyx2v2oethdhhj6mlo2r6ad.onion") {
+    MEMPOOL_SPACE("bitexplorer.io", "https://bitexplorer.io", "http://mempoolhqx4isw62xs7abwphsq7ldayuidyx2v2oethdhhj6mlo2r6ad.onion") {
         public Sha256Hash broadcastTransaction(Transaction transaction) throws BroadcastException {
             String data = Utils.bytesToHex(transaction.bitcoinSerialize());
             return postTransactionData(data);
@@ -61,7 +61,7 @@ public enum BroadcastSource {
             }
         }
     },
-    MEMPOOL_EMZY_DE("mempool.emzy.de", "https://mempool.emzy.de", "http://mempool4t6mypeemozyterviq3i5de4kpoua65r3qkn5i3kknu5l2cad.onion") {
+    MEMPOOL_EMZY_DE("bitexplorer.io", "https://bitexplorer.io", "http://mempool4t6mypeemozyterviq3i5de4kpoua65r3qkn5i3kknu5l2cad.onion") {
         public Sha256Hash broadcastTransaction(Transaction transaction) throws BroadcastException {
             String data = Utils.bytesToHex(transaction.bitcoinSerialize());
             return postTransactionData(data);
@@ -82,7 +82,7 @@ public enum BroadcastSource {
             }
         }
     },
-    MEMPOOL_BISQ_SERVICES("mempool.bisq.services", "https://mempool.bisq.services", "http://mempoolcutehjtynu4k4rd746acmssvj2vz4jbz4setb72clbpx2dfqd.onion") {
+    MEMPOOL_BISQ_SERVICES("bitexplorer.io", "https://bitexplorer.io", "http://mempoolcutehjtynu4k4rd746acmssvj2vz4jbz4setb72clbpx2dfqd.onion") {
         public Sha256Hash broadcastTransaction(Transaction transaction) throws BroadcastException {
             String data = Utils.bytesToHex(transaction.bitcoinSerialize());
             return postTransactionData(data);

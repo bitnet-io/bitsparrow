@@ -33,7 +33,7 @@ public class Tor {
 
     private static Tor tor;
 
-    private final Path path = Path.invoke(Storage.getSparrowHome().getAbsolutePath()).builder().addSegment(TOR_DIR).build();
+    private final Path path = Path.invoke(Storage.getBitSparrowHome().getAbsolutePath()).builder().addSegment(TOR_DIR).build();
     private final CallbackTorManager instance;
     private ProxyAddress socksAddress;
 
@@ -61,7 +61,7 @@ public class Tor {
                 installer = PlatformInstaller.linuxX64(installOption);
             }
         } else {
-            throw new UnsupportedOperationException("Sparrow's bundled Tor is not supported on " + platform + " " + arch);
+            throw new UnsupportedOperationException("BitSparrow's bundled Tor is not supported on " + platform + " " + arch);
         }
 
         TorConfigProviderJvm torConfigProviderJvm = new TorConfigProviderJvm() {

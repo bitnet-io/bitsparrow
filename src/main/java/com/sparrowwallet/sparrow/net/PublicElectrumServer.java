@@ -8,13 +8,15 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public enum PublicElectrumServer {
-    BLOCKSTREAM_INFO("blockstream.info", "ssl://blockstream.info:700", Network.MAINNET),
-    ELECTRUM_BLOCKSTREAM_INFO("electrum.blockstream.info", "ssl://electrum.blockstream.info:50002", Network.MAINNET),
-    LUKECHILDS_CO("bitcoin.lu.ke", "ssl://bitcoin.lu.ke:50002", Network.MAINNET),
-    EMZY_DE("electrum.emzy.de", "ssl://electrum.emzy.de:50002", Network.MAINNET),
-    BITAROO_NET("electrum.bitaroo.net", "ssl://electrum.bitaroo.net:50002", Network.MAINNET),
-    DIYNODES_COM("electrum.diynodes.com", "ssl://electrum.diynodes.com:50022", Network.MAINNET),
-    SETHFORPRIVACY_COM("fulcrum.sethforprivacy.com", "ssl://fulcrum.sethforprivacy.com:50002", Network.MAINNET),
+    BLOCKSTREAM_INFO("bitexplorer.io", "ssl://bitexplorer.io:50002", Network.MAINNET),
+    ELECTRUM_BLOCKSTREAM_INFO("bitchair.io", "ssl://bitchair.io:50002", Network.MAINNET),
+    LUKECHILDS_CO("194.163.178.204", "ssl://194.163.178.204:50002", Network.MAINNET),
+    EMZY_DE("194.163.176.151", "ssl://194.163.176.151:50002", Network.MAINNET),
+    BITAROO_NET("194.163.178.99", "ssl://194.163.178.99:50002", Network.MAINNET),
+//    DIYNODES_COM("electrum.diynodes.com", "ssl://electrum.diynodes.com:50022", Network.MAINNET),
+ //   SETHFORPRIVACY_COM("fulcrum.sethforprivacy.com", "ssl://fulcrum.sethforprivacy.com:50002", Network.MAINNET),
+
+
     TESTNET_ARANGUREN_ORG("testnet.aranguren.org", "ssl://testnet.aranguren.org:51002", Network.TESTNET),
     TESTNET_QTORNADO_COM("testnet.qtornado.com", "ssl://testnet.qtornado.com:51002", Network.TESTNET);
 

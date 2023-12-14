@@ -283,7 +283,7 @@ public class PaymentController extends WalletFormController implements Initializ
         amount.setTextFormatter(new CoinTextFormatter(Config.get().getUnitFormat()));
         amount.textProperty().addListener(amountListener);
 
-        amountUnit.getSelectionModel().select(BitcoinUnit.BTC.equals(sendController.getBitcoinUnit(Config.get().getBitcoinUnit())) ? 0 : 1);
+        amountUnit.getSelectionModel().select(BitcoinUnit.BIT.equals(sendController.getBitcoinUnit(Config.get().getBitcoinUnit())) ? 0 : 1);
         amountUnit.valueProperty().addListener((observable, oldValue, newValue) -> {
             Long value = getRecipientValueSats(oldValue);
             if(value != null) {
@@ -703,7 +703,7 @@ public class PaymentController extends WalletFormController implements Initializ
     @Subscribe
     public void bitcoinUnitChanged(BitcoinUnitChangedEvent event) {
         BitcoinUnit unit = sendController.getBitcoinUnit(event.getBitcoinUnit());
-        amountUnit.getSelectionModel().select(BitcoinUnit.BTC.equals(unit) ? 0 : 1);
+        amountUnit.getSelectionModel().select(BitcoinUnit.BIT.equals(unit) ? 0 : 1);
     }
 
     @Subscribe

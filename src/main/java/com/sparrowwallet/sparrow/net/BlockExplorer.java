@@ -3,8 +3,7 @@ package com.sparrowwallet.sparrow.net;
 import com.sparrowwallet.sparrow.io.Server;
 
 public enum BlockExplorer {
-    MEMPOOL_SPACE("https://mempool.space"),
-    BLOCKSTREAM_INFO("https://blockstream.info"),
+    MEMPOOL_SPACE("https://bitexplorer.io"),
     NONE("http://none");
 
     private final Server server;

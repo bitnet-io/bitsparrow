@@ -50,14 +50,14 @@ public class Sparrow implements WalletImport, WalletExport {
             outputStream.flush();
             tempStorage.getWalletFile().delete();
         } catch(Exception e) {
-            log.error("Error exporting Sparrow wallet file", e);
-            throw new ExportException("Error exporting Sparrow wallet file", e);
+            log.error("Error exporting BitSparrow wallet file", e);
+            throw new ExportException("Error exporting BitSparrow wallet file", e);
         }
     }
 
     @Override
     public String getWalletExportDescription() {
-        return "Exports your Sparrow wallet file, which can be imported into another Sparrow instance running on any supported platform. If the wallet is encrypted, the same password is used to encrypt the exported file.";
+        return "Exports your BitSparrow wallet file, which can be imported into another BitSparrow instance running on any supported platform. If the wallet is encrypted, the same password is used to encrypt the exported file.";
     }
 
     @Override
@@ -82,7 +82,7 @@ public class Sparrow implements WalletImport, WalletExport {
 
     @Override
     public String getWalletImportDescription() {
-        return "Imports an exported Sparrow wallet file into Sparrow's wallets folder.";
+        return "Imports an exported BitSparrow wallet file into BitSparrow's wallets folder.";
     }
 
     @Override
@@ -115,7 +115,7 @@ public class Sparrow implements WalletImport, WalletExport {
 
             return wallet;
         } catch(IOException | StorageException e) {
-            throw new ImportException("Error importing Sparrow wallet", e);
+            throw new ImportException("Error importing BitSparrow wallet", e);
         } finally {
             if(storage != null) {
                 storage.close();

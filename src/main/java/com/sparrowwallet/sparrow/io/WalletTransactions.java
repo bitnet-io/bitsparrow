@@ -132,7 +132,7 @@ public class WalletTransactions implements WalletExport {
 
     private String getCoinValue(BitcoinUnit bitcoinUnit, Long value) {
         UnitFormat format = Config.get().getUnitFormat() == null ? UnitFormat.DOT : Config.get().getUnitFormat();
-        return BitcoinUnit.BTC.equals(bitcoinUnit) ? format.tableFormatBtcValue(value) : String.format(Locale.ENGLISH, "%d", value);
+        return BitcoinUnit.BIT.equals(bitcoinUnit) ? format.tableFormatBtcValue(value) : String.format(Locale.ENGLISH, "%d", value);
     }
 
     private String getFiatValue(Double value) {
@@ -151,7 +151,7 @@ public class WalletTransactions implements WalletExport {
         }
 
         if(dayRate != null) {
-            return dayRate * txEntry.getValue() / Transaction.SATOSHIS_PER_BITCOIN;
+            return dayRate * txEntry.getValue() / Transaction.RADIOWAVES_PER_BITCOIN;
         }
 
         return null;
