@@ -60,10 +60,10 @@ public class CopyableCoinLabel extends CopyableLabel {
 
         BitcoinUnit unit = bitcoinUnit;
         if(unit == null || unit.equals(BitcoinUnit.AUTO)) {
-            unit = (value >= BitcoinUnit.getAutoThreshold() ? BitcoinUnit.BIT : BitcoinUnit.RADIOWAVES);
+            unit = (value >= BitcoinUnit.getAutoThreshold() ? BitcoinUnit.BTC : BitcoinUnit.SATOSHIS);
         }
 
-        if(unit.equals(BitcoinUnit.BIT)) {
+        if(unit.equals(BitcoinUnit.BTC)) {
             tooltip.setText(satsValue);
             setText(btcValue);
         } else {

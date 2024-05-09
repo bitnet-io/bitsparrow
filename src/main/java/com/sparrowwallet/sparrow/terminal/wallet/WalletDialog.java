@@ -161,7 +161,7 @@ public class WalletDialog extends DialogWindow {
     protected String formatBitcoinValue(long value, boolean appendUnit) {
         BitcoinUnit unit = Config.get().getBitcoinUnit();
         if(unit == null || unit.equals(BitcoinUnit.AUTO)) {
-            unit = (value >= BitcoinUnit.getAutoThreshold() ? BitcoinUnit.BIT : BitcoinUnit.RADIOWAVES);
+            unit = (value >= BitcoinUnit.getAutoThreshold() ? BitcoinUnit.BTC : BitcoinUnit.SATOSHIS);
         }
 
         UnitFormat format = Config.get().getUnitFormat();
@@ -169,7 +169,7 @@ public class WalletDialog extends DialogWindow {
             format = UnitFormat.DOT;
         }
 
-        return unit == BitcoinUnit.RADIOWAVES ? format.formatSatsValue(value) + (appendUnit ? " sats" : "") : format.formatBtcValue(value) + (appendUnit ? " BIT" : "");
+        return unit == BitcoinUnit.SATOSHIS ? format.formatSatsValue(value) + (appendUnit ? " sats" : "") : format.formatBtcValue(value) + (appendUnit ? " BIT" : "");
     }
 
     protected String formatFiatValue(Double value) {
@@ -189,7 +189,7 @@ public class WalletDialog extends DialogWindow {
 
     protected double getFiatValue(long satsValue, CurrencyRate currencyRate) {
         if(currencyRate != null && currencyRate.isAvailable()) {
-            return satsValue * currencyRate.getBtcRate() / Transaction.RADIOWAVES_PER_BITCOIN;
+            return satsValue * currencyRate.getBtcRate() / Transaction.SATOSHIS_PER_BITCOIN;
         }
 
         return 0d;

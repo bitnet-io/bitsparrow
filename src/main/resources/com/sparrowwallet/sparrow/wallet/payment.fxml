@@ -53,7 +53,7 @@
                     <items>
                         <FXCollections fx:factory="observableArrayList">
                             <BitcoinUnit fx:constant="BIT" />
-                            <BitcoinUnit fx:constant="RADIOWAVES" />
+                            <BitcoinUnit fx:constant=.SATOSHIS" />
                         </FXCollections>
                     </items>
                 </ComboBox>

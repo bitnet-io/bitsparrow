@@ -830,7 +830,7 @@ public class ElectrumServer {
 
             Map<Integer, Double> targetBlocksFeeRatesSats = new TreeMap<>();
             for(Integer target : targetBlocksFeeRatesBtcKb.keySet()) {
-                long minFeeRateSatsKb = (long)(targetBlocksFeeRatesBtcKb.get(target) * Transaction.RADIOWAVES_PER_BITCOIN);
+                long minFeeRateSatsKb = (long)(targetBlocksFeeRatesBtcKb.get(target) * Transaction.SATOSHIS_PER_BITCOIN);
                 if(minFeeRateSatsKb < 0) {
                     minFeeRateSatsKb = 1000;
                 }
@@ -859,7 +859,7 @@ public class ElectrumServer {
     public Double getMinimumRelayFee() throws ServerException {
         Double minFeeRateBtcKb = electrumServerRpc.getMinimumRelayFee(getTransport());
         if(minFeeRateBtcKb != null) {
-            long minFeeRateSatsKb = (long)(minFeeRateBtcKb * Transaction.RADIOWAVES_PER_BITCOIN);
+            long minFeeRateSatsKb = (long)(minFeeRateBtcKb * Transaction.SATOSHIS_PER_BITCOIN);
             return minFeeRateSatsKb / 1000d;
         }
 

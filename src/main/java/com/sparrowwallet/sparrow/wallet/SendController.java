@@ -348,7 +348,7 @@ public class SendController extends WalletFormController implements Initializabl
         fee.textProperty().addListener(feeListener);
 
         BitcoinUnit unit = getBitcoinUnit(Config.get().getBitcoinUnit());
-        feeAmountUnit.getSelectionModel().select(BitcoinUnit.BIT.equals(unit) ? 0 : 1);
+        feeAmountUnit.getSelectionModel().select(BitcoinUnit.BTC.equals(unit) ? 0 : 1);
         feeAmountUnit.valueProperty().addListener((observable, oldValue, newValue) -> {
             Long value = getFeeValueSats(oldValue);
             if(value != null) {
@@ -1543,7 +1543,7 @@ public class SendController extends WalletFormController implements Initializabl
     @Subscribe
     public void bitcoinUnitChanged(BitcoinUnitChangedEvent event) {
         BitcoinUnit unit = getBitcoinUnit(event.getBitcoinUnit());
-        feeAmountUnit.getSelectionModel().select(BitcoinUnit.BIT.equals(unit) ? 0 : 1);
+        feeAmountUnit.getSelectionModel().select(BitcoinUnit.BTC.equals(unit) ? 0 : 1);
     }
 
     @Subscribe

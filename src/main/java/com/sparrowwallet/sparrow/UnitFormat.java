@@ -91,11 +91,11 @@ public enum UnitFormat {
     public abstract DecimalFormat getTableCurrencyFormat();
 
     public String formatBtcValue(Long amount) {
-        return getBtcFormat().format(amount.doubleValue() / Transaction.RADIOWAVES_PER_BITCOIN);
+        return getBtcFormat().format(amount.doubleValue() / Transaction.SATOSHIS_PER_BITCOIN);
     }
 
     public String tableFormatBtcValue(Long amount) {
-        return getTableBtcFormat().format(amount.doubleValue() / Transaction.RADIOWAVES_PER_BITCOIN);
+        return getTableBtcFormat().format(amount.doubleValue() / Transaction.SATOSHIS_PER_BITCOIN);
     }
 
     public String formatSatsValue(Long amount) {

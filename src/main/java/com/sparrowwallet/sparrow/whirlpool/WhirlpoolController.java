@@ -167,8 +167,8 @@ public class WhirlpoolController {
                 String satsValue = format.formatSatsValue(selectedPool.getDenomination()) + " sats";
                 String btcValue = format.formatBtcValue(selectedPool.getDenomination()) + " BIT";
 
-                pool.setTooltip(bitcoinUnit == BitcoinUnit.BIT ? new Tooltip(satsValue) : new Tooltip(btcValue));
-                return bitcoinUnit == BitcoinUnit.BIT ? btcValue : satsValue;
+                pool.setTooltip(bitcoinUnit == BitcoinUnit.BTC ? new Tooltip(satsValue) : new Tooltip(btcValue));
+                return bitcoinUnit == BitcoinUnit.BTC ? btcValue : satsValue;
             }
 
             @Override
@@ -286,7 +286,7 @@ public class WhirlpoolController {
                         UnitFormat format = Config.get().getUnitFormat() == null ? UnitFormat.DOT : Config.get().getUnitFormat();
                         String satsValue = format.formatSatsValue(optMinValue.getAsLong()) + " sats";
                         String btcValue = format.formatBtcValue(optMinValue.getAsLong()) + " BIT";
-                        poolInsufficient.setText("No available pools. Select a value over " + (Config.get().getBitcoinUnit() == BitcoinUnit.BIT ? btcValue : satsValue) + ".");
+                        poolInsufficient.setText("No available pools. Select a value over " + (Config.get().getBitcoinUnit() == BitcoinUnit.BTC ? btcValue : satsValue) + ".");
                     }
                 });
                 allPoolsService.start();

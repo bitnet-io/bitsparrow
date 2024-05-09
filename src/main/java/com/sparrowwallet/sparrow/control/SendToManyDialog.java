@@ -99,11 +99,11 @@ public class SendToManyDialog extends Dialog<List<Payment>> {
             list.add(addressCell);
 
             double amount = (double)payments.get(row).getAmount();
-            if(bitcoinUnit == BitcoinUnit.BIT) {
-                amount = amount / Transaction.RADIOWAVES_PER_BITCOIN;
+            if(bitcoinUnit == BitcoinUnit.BTC) {
+                amount = amount / Transaction.SATOSHIS_PER_BITCOIN;
             }
             SpreadsheetCell amountCell = SpreadsheetCellType.DOUBLE.createCell(row, 1, 1, 1, amount < 0 ? null : amount);
-            amountCell.setFormat(bitcoinUnit == BitcoinUnit.BIT ? "0.00000000" : "###,###");
+            amountCell.setFormat(bitcoinUnit == BitcoinUnit.BTC ? "0.00000000" : "###,###");
             amountCell.getStyleClass().add("number-value");
             if(Platform.getCurrent() == Platform.OSX) {
                 amountCell.getStyleClass().add("number-field");
@@ -136,8 +136,8 @@ public class SendToManyDialog extends Dialog<List<Payment>> {
             }
 
             if(address != null && value != null) {
-                if(bitcoinUnit == BitcoinUnit.BIT) {
-                    value = value * Transaction.RADIOWAVES_PER_BITCOIN;
+                if(bitcoinUnit == BitcoinUnit.BTC) {
+                    value = value * Transaction.SATOSHIS_PER_BITCOIN;
                 }
 
                 payments.add(new Payment(address, label, value.longValue(), false));
@@ -179,9 +179,9 @@ public class SendToManyDialog extends Dialog<List<Payment>> {
 
                                     try {
                                         long amount;
-                                        if(bitcoinUnit == BitcoinUnit.BIT) {
+                                        if(bitcoinUnit == BitcoinUnit.BTC) {
                                             double doubleAmount = Double.parseDouble(csvReader.get(1).replace(",", ""));
-                                            amount = (long)(doubleAmount * Transaction.RADIOWAVES_PER_BITCOIN);
+                                            amount = (long)(doubleAmount * Transaction.SATOSHIS_PER_BITCOIN);
                                         } else {
                                             amount = Long.parseLong(csvReader.get(1).replace(",", ""));
                                         }

@@ -34,7 +34,7 @@ public class CoinTableCell extends TableCell {
 
         BitcoinUnit unit = Config.get().getBitcoinUnit();
         if(unit == null || unit.equals(BitcoinUnit.AUTO)) {
-            unit = (value >= BitcoinUnit.getAutoThreshold() ? BitcoinUnit.BIT : BitcoinUnit.RADIOWAVES);
+            unit = (value >= BitcoinUnit.getAutoThreshold() ? BitcoinUnit.BTC : BitcoinUnit.SATOSHIS);
         }
 
         UnitFormat format = Config.get().getUnitFormat();
@@ -42,7 +42,7 @@ public class CoinTableCell extends TableCell {
             format = UnitFormat.DOT;
         }
 
-        String formattedValue = unit == BitcoinUnit.RADIOWAVES ? format.formatSatsValue(value) : format.formatBtcValue(value);
+        String formattedValue = unit == BitcoinUnit.SATOSHIS ? format.formatSatsValue(value) : format.formatBtcValue(value);
         return Strings.padStart(formattedValue, getWidth(entry), ' ');
     }
 

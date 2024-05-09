@@ -55,10 +55,10 @@ public class NewWalletTransactionsEvent {
 
         BitcoinUnit unit = Config.get().getBitcoinUnit();
         if(unit == null || unit.equals(BitcoinUnit.AUTO)) {
-            unit = (value >= BitcoinUnit.getAutoThreshold() ? BitcoinUnit.BIT : BitcoinUnit.RADIOWAVES);
+            unit = (value >= BitcoinUnit.getAutoThreshold() ? BitcoinUnit.BTC : BitcoinUnit.SATOSHIS);
         }
 
-        if(unit == BitcoinUnit.BIT) {
+        if(unit == BitcoinUnit.BTC) {
             return format.formatBtcValue(value) + " BIT";
         }
 

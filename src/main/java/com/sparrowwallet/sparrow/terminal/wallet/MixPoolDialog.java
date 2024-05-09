@@ -1,3 +1,4 @@
+
 package com.sparrowwallet.sparrow.terminal.wallet;
 
 import com.googlecode.lanterna.TerminalSize;
@@ -150,7 +151,7 @@ public class MixPoolDialog extends WalletDialog {
                         UnitFormat format = Config.get().getUnitFormat() == null ? UnitFormat.DOT : Config.get().getUnitFormat();
                         String satsValue = format.formatSatsValue(optMinValue.getAsLong()) + " sats";
                         String btcValue = format.formatBtcValue(optMinValue.getAsLong()) + " BIT";
-                        AppServices.showErrorDialog("Insufficient UTXO Value", "No available pools. Select a value over " + (Config.get().getBitcoinUnit() == BitcoinUnit.BIT ? btcValue : satsValue) + ".");
+                        AppServices.showErrorDialog("Insufficient UTXO Value", "No available pools. Select a value over " + (Config.get().getBitcoinUnit() == BitcoinUnit.BTC ? btcValue : satsValue) + ".");
                         SparrowTerminal.get().getGuiThread().invokeLater(this::close);
                     }
                 });
