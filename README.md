@@ -10,7 +10,7 @@ More information (and release binaries) can be found at https://sparrowwallet.co
 
 ## Building
 ```
-git clone https://github.com/bitnet-io/bitsparrow/
+git clone https://github.com/bitnet-io/bitsparrow
 cd bitsparrow
 tar -xvf drongo.tar.gz
 ./gradlew jpackage
