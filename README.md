@@ -1,4 +1,4 @@
-# REQUIRES JAVA JRE version 18 ONLY
+# REQUIRES JAVA JDK version 17+ ONLY
 
 # BitSparrow Bitcoin Wallet
 
@@ -9,16 +9,22 @@ More information (and release binaries) can be found at https://sparrowwallet.co
 ![BitSparrow Wallet](https://sparrowwallet.com/assets/images/control-your-sends.png)
 
 ## Building
+```
+git clone https://github.com/bitnet-io/bitsparrow/
+cd bitsparrow
+tar -xvf drongo.tar.gz
+./gradlew jpackage
+ls -l build/jpackage
+alien --to-deb --scripts build/jpackage/bit*rpm
+apt install xdg-utils -y
+ls -l bitsparrow*deb
+date
+dpkg -i bitsparrow*deb
 
-To clone this project, use
+```
 
-`git clone --recursive git@github.com:sparrowwallet/sparrow.git`
 
-or for those without SSH credentials:
-
-`git clone --recursive https://github.com/sparrowwallet/sparrow.git`
-
-In order to build, BitSparrow requires Java 18 or higher to be installed. 
+In order to build, BitSparrow requires Java 17 or higher to be installed. 
 The release binaries are built with [Eclipse Temurin 18.0.1+10](https://github.com/adoptium/temurin18-binaries/releases/tag/jdk-18.0.1%2B10).
 
 Other packages may also be necessary to build depending on the platform. On Debian/Ubuntu systems:
